@@ -19,8 +19,8 @@ else{
 // GET DOM ELEMENTS
 let $ = (id) => document.getElementById(id)
 let form        = document.getElementById('addForm')
-let empTable        = document.getElementById('empTable')
-let empCount        = document.getElementById('empCount')
+let empTable    = document.getElementById('empTable')
+let empCount    = document.getElementById('empCount')
 // BUILD THE EMPLOYEES TABLE WHEN THE PAGE LOADS
 
 buildGrid()
@@ -51,6 +51,7 @@ empTable.addEventListener('click', (e) => {
     // GET THE SELECTED ROWINDEX FOR THE TR
     let btn = e.target
     let rowIndex = btn.closest('tr').rowIndex;
+    // GET THE NAME WANTED TO DELETE
     let d_name = arrEmployees[rowIndex- 1][1]
     // CONFIRM THE NAME TO DELETE
     if(confirm(`Are you sure you want to delete ${d_name} user?`)){
@@ -71,7 +72,6 @@ function buildGrid() {
     // REBUILDING THE ROW STRUCTURE
     for(let employee of arrEmployees){
         tbody.innerHTML += 
-
             `
             <tr>
                 <td>${employee[0]}</td>
@@ -81,9 +81,7 @@ function buildGrid() {
                 <td>${employee[4]}</td>
                 <td><button class='btn btn-light btn-sm delete'><i class="fa-solid fa-trash-can"></i></button></td>
             </tr>
-
-            `
-        
+            `        
     }
     // BIND THE TBODY TO THE EMPLOYEE TABLE
     empTable.appendChild(tbody)
